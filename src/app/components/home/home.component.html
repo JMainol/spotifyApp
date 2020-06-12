@@ -1,0 +1,19 @@
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Filtrar playlist" [(ngModel)]="term">
+</div>
+
+<!-- <div class="row">
+  <div class="col">
+      <input #termino type="text" (keyup)="buscar(termino.value)" class="form-control" placeholder="Buscar artista...">
+  </div>
+</div> -->
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+  <h3>Error</h3>
+  <p>
+    {{ mensajeError }}
+  </p>
+</div>
+
+<app-tarjetas [querie]="term" [items]="artistas70"></app-tarjetas>

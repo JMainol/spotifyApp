@@ -1,0 +1,22 @@
+<div class="card-columns m-5 animated faceIn">
+  <div class="card" *ngFor="let item of items | filter:querie" [ngClass]="{'deleted':
+   item.delete }">
+
+    <button (click)="item.delete = !item.delete" type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <img class="card-img-top" [src]="item.images | noimage" [alt]="item.name">
+    <div (click)="verArtista(item)" class="card-body puntero">
+      <h5 class="card-title">
+          {{ item.name }}
+      </h5>
+      <p class="card-text">
+          <span *ngFor="let genero of item.genres" class="badge badge-pill badge-warning">
+              {{ genero }}
+          </span>
+      </p>
+
+    </div>
+  </div>
+</div>
