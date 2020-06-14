@@ -17,7 +17,7 @@ hr {
 
 .img-circle {
     border-radius: 100%;
-    width: 150px;
+    width: 100%;
 }
 
 .card-title,
@@ -27,6 +27,11 @@ hr {
 
 .badge {
     margin-left: 5px;
+}
+/* Cabecera Pagina Artistas */
+
+.cabecera{
+    flex-wrap: nowrap;
 }
 
 .btn-outline-success {
@@ -83,10 +88,26 @@ hr {
 .plus{
     color:#155724;
 }
+@media (max-width: 960px){
+    
+    .cabecera div:first-child{
+        display:none;
+    }
+}
 
 @media (max-width: 768px){
     
     .hidden-mov{
         display: none;
+    }
+    body{
+        background-color: black;
+        background-image: none;
+    }
+    .table {
+        font-size: 10px;
+    }
+    iframe{
+        width: 250px;
     }
 }
