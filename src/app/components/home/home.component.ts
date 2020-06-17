@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,13 +18,23 @@ export class HomeComponent{
   error: boolean;
   mensajeError: string;
 
+  addedArtist: string;
 
-  constructor(private spotify: SpotifyService) {
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private spotify: SpotifyService
+                  ) {
+
+      this.activatedRoute.params.subscribe(params =>{
+        console.log(params.id);
+        this.addedArtist = params.id;
+        console.log(this.addedArtist);
+      });
 
       this.loading = true;
       this.error = false;
-    
-      this.spotify.get70Artists()
+
+      this.spotify.get70Artists(this.addedArtist)
           .subscribe( (data: any )=>{
               console.log(data);
               this.artistas70 = data;
@@ -35,6 +45,8 @@ export class HomeComponent{
             console.log(errorServicio);
             this.mensajeError = errorServicio.error.error.message;
           });
+
+      
 
   }
 
